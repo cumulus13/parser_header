@@ -1,0 +1,61 @@
+[build-system]
+requires = [ "setuptools>=61.0", "wheel",]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "parser_header"
+version = "1.0.1"
+description = "A robust HTTP header and cookie parser library"
+readme = "README.md"
+keywords = [ "http", "header", "parser", "cookie", "request", "response", "web", "client-hints", "sec-ch-ua",]
+classifiers = [ "Development Status :: 5 - Production/Stable", "Intended Audience :: Developers", "License :: OSI Approved :: MIT License", "Operating System :: OS Independent", "Programming Language :: Python :: 3", "Programming Language :: Python :: 3.8", "Programming Language :: Python :: 3.9", "Programming Language :: Python :: 3.10", "Programming Language :: Python :: 3.11", "Programming Language :: Python :: 3.12", "Topic :: Internet :: WWW/HTTP", "Topic :: Software Development :: Libraries :: Python Modules", "Typing :: Typed",]
+requires-python = ">=3.8"
+dependencies = []
+[[project.authors]]
+name = "Hadi Cahyadi"
+email = "cumulus13@gmail.com"
+
+[[project.maintainers]]
+name = "Hadi Cahyadi"
+email = "cumulus13@gmail.com"
+
+[project.license]
+text = "MIT"
+
+[project.optional-dependencies]
+dev = [ "pytest>=7.0", "pytest-cov>=4.0", "black>=23.0", "mypy>=1.0", "ruff>=0.1.0",]
+
+[project.urls]
+Homepage = "https://github.com/cumulus13/parser_header"
+Documentation = "https://github.com/cumulus13/parser_header#readme"
+Repository = "https://github.com/cumulus13/parser_header"
+Issues = "https://github.com/cumulus13/parser_header/issues"
+
+[project.scripts]
+parser-header = "parser_header.cli:main"
+
+[tool.black]
+line-length = 100
+target-version = [ "py38", "py39", "py310", "py311", "py312",]
+
+[tool.ruff]
+line-length = 100
+select = [ "E", "F", "W", "I", "N", "UP", "B", "C4",]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.setuptools.package-data]
+parser_header = [ "py.typed",]
+
+[tool.pytest.ini_options]
+testpaths = [ "tests",]
+python_files = [ "test_*.py",]
+addopts = "-v --cov=parser_header --cov-report=term-missing"
+
+[tool.setuptools.packages.find]
+where = [ ".",]
+include = [ "parser_header*",]
